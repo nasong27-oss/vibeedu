@@ -15,135 +15,122 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --color-primary:       #EFD46A;
-      --color-primary-light: #FAF0C8;
-      --color-primary-dark:  #D4B84A;
-      --color-accent:        #E0A870;
-      --color-accent-light:  #F9EBD8;
-      --color-bg:            #FAFAF6;
-      --color-surface:       #F2EFE4;
-      --color-text:          #3C3830;
-      --color-text-muted:    #7A7060;
-      --color-border:        #D4D0C4;
-      --white: #FFFFFF;
-      --black: #000000;
+      /* Colors based on Puradak Box & Coke & White Table */
+      --color-primary:       #18181B; /* Puradak Box Black */
+      --color-primary-light: #F4F4F5; /* Table White / Light Gray */
+      --color-primary-dark:  #09090A; /* Deep Black */
+      --color-accent:        #D4AF37; /* Puradak Gold */
+      --color-accent-light:  #FEF3C7; /* Light Gold */
+      
+      --color-coke-red:      #E50014; /* Coca-Cola Red */
+
+      --color-bg:            #FFFFFF; /* White Table Background */
+      --color-surface:       #18181B; /* Box Black Surface for specific areas */
+      
+      --color-text:          #18181B; /* Main text on white */
+      --color-text-inverse:  #F4F4F5; /* Main text on black */
+      --color-text-muted:    #71717A; /* Muted text */
+      
+      --color-border:        #E4E4E7; /* Light border on white */
+      
       --font-kr: 'Pretendard', 'Noto Sans KR', sans-serif;
       --font-en: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
-      --max-w: 900px;
     }
 
     html { scroll-behavior: smooth; }
 
+    /* ===== 1. 전체 레이아웃 ===== */
     body {
-      font-family: var(--font-kr);
-      background-color: var(--color-bg);
+      background: var(--color-bg);
       color: var(--color-text);
+      font-family: var(--font-kr);
       font-size: 16px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ===== LAYOUT ===== */
-    .container {
-      max-width: var(--max-w);
+    /* 콘텐츠 컨테이너 (디에디트 스타일 - 단일 컬럼 720px) */
+    .container, main.steps-section, .intro-section, .flow-section, .resources-section {
+      max-width: 720px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    section { padding: 80px 0; }
-
-    /* ===== HEADER ===== */
+    /* ===== 2. 헤더 / 히어로 영역 (Puradak Box Style) ===== */
     .site-header {
-      background: var(--color-primary);
-      color: var(--color-text);
-      padding: 88px 24px 80px;
-      text-align: center;
+      background: var(--color-surface); /* Black Box */
+      padding: 64px 24px 48px;
+    }
+
+    .site-header .eyebrow,
+    .site-header h1,
+    .site-header .subtitle,
+    .site-header .header-meta {
+      max-width: 672px; /* 720 - 48 */
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
     }
 
     .site-header .eyebrow {
       font-family: var(--font-en);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #7A6000;
-      margin-bottom: 22px;
-    }
-
-    .site-header h1 {
-      font-size: clamp(38px, 7vw, 68px);
-      font-weight: 600;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 18px;
-      color: var(--color-text);
-    }
-
-    .site-header .subtitle {
-      font-size: clamp(15px, 2.5vw, 19px);
-      font-weight: 400;
-      color: #7A6000;
-      margin-bottom: 36px;
-    }
-
-    .header-meta {
-      display: inline-flex;
-      align-items: center;
-      gap: 20px;
-      background: rgba(60, 56, 48, 0.1);
-      border: 1px solid rgba(60, 56, 48, 0.2);
-      border-radius: 100px;
-      padding: 10px 24px;
-      font-family: var(--font-en);
-      font-size: 13px;
-      color: #4A3800;
-      letter-spacing: 0.03em;
-    }
-
-    .header-meta span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .header-meta .divider {
-      width: 1px;
-      height: 14px;
-      background: rgba(60, 56, 48, 0.2);
-    }
-
-    /* ===== INTRO ===== */
-    .intro-section {
-      background-color: var(--color-bg);
-      padding: 64px 24px;
-      text-align: center;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .intro-section .intro-label {
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--color-accent); /* Gold */
+      display: block;
       margin-bottom: 16px;
     }
 
-    .intro-section p {
-      max-width: 680px;
-      margin: 0 auto 12px;
-      font-size: clamp(15px, 2vw, 17px);
-      color: var(--color-text);
-      line-height: 1.8;
-      text-align: left;
+    .site-header h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: var(--color-text-inverse); /* White on Black */
+      margin-bottom: 12px;
     }
 
-    .intro-section p + p {
-      color: var(--color-text-muted);
-      font-size: 15px;
+    .site-header .subtitle {
+      font-size: 17px;
+      color: var(--color-text-inverse);
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      font-weight: 400;
     }
+
+    .header-meta {
+      font-size: 13px;
+      color: var(--color-accent); /* Gold */
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-family: var(--font-en);
+      width: 100%;
+      justify-content: flex-start;
+    }
+    .header-meta span { display: flex; align-items: center; gap: 6px; }
+    .header-meta .divider { width: 1px; height: 14px; background: rgba(212, 175, 55, 0.4); }
+
+    /* ===== INTRO (About this guide) ===== */
+    .intro-section {
+      background: var(--color-bg);
+      border-radius: 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 40px 24px;
+      margin: 48px auto;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-text);
+      text-align: left;
+    }
+    .intro-section p { font-size: 16px; margin-bottom: 12px; }
+    .intro-section p + p { color: inherit; font-size: 16px; }
+    .intro-section .intro-label { display: none; }
 
     /* ===== PROGRESS BAR ===== */
     .progress-nav {
@@ -182,8 +169,8 @@
 
     .progress-step:hover .progress-dot,
     .progress-step.active .progress-dot {
-      background: var(--color-primary-dark);
-      border-color: var(--color-primary-dark);
+      background: var(--color-coke-red);
+      border-color: var(--color-coke-red);
       transform: scale(1.2);
     }
 
@@ -194,6 +181,10 @@
       color: var(--color-text-muted);
       text-transform: uppercase;
     }
+    
+    .progress-step.active .progress-step-label {
+      color: var(--color-coke-red);
+    }
 
     .progress-line {
       flex: 2;
@@ -202,428 +193,274 @@
       margin-bottom: 14px;
     }
 
-    /* ===== STEP CARDS ===== */
-    .steps-section {
-      padding: 0;
-      background: var(--color-bg);
-    }
+    /* ===== STEPS (본문 — 각 단계 섹션) ===== */
+    .steps-section { padding: 0 24px; background: none; }
 
+    /* 박스형 카드 스타일 완전 제거 */
     .step-card {
-      padding: 64px 24px;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .step-card.visible {
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0; 
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
     .step-card + .step-card {
       border-top: 1px solid var(--color-border);
+      padding-top: 56px;
+      margin-top: 56px;
     }
 
-    .step-card .step-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
+    .step-inner { padding: 0; }
 
-    .step-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      margin-bottom: 32px;
-    }
-
-    .step-title-group {
-      flex: 1;
-    }
+    .step-header { display: block; margin-bottom: 24px; }
 
     .step-number {
-      display: inline-block;
-      background: var(--color-primary);
-      color: var(--color-text);
-      font-family: var(--font-kr);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.04em;
-      border-radius: 6px;
-      padding: 2px 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-coke-red); /* Coke Red for Step Numbers */
       margin-bottom: 8px;
+      display: block;
+      background: none;
+      padding: 0;
+      border-radius: 0;
     }
-
-    .step-title-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
+    
+    .step-title-row { display: block; }
+    
     .step-title {
-      font-size: clamp(20px, 3.5vw, 26px);
-      font-weight: 600;
-      line-height: 1.2;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--color-text);
+      color: var(--color-text); /* Black */
+      margin-bottom: 4px;
+      line-height: 1.3;
     }
 
     .step-duration {
-      font-family: var(--font-en);
       font-size: 13px;
+      font-family: inherit;
       color: var(--color-text-muted);
-      margin-top: 6px;
+      margin-bottom: 24px;
+      margin-top: 4px;
     }
 
-    /* Step body */
-    .step-body {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .step-desc {
-      font-size: 16px;
+    /* 본문 */
+    .step-body { display: block; }
+    
+    .step-body p, .step-body li, .step-desc, .step-why {
+      font-size: 17px;
       line-height: 1.8;
       color: var(--color-text);
     }
+    .step-desc { margin-bottom: 24px; }
+    .step-why { margin-bottom: 24px; color: var(--color-text-muted); }
 
-    .step-why {
-      font-size: 15px;
-      color: var(--color-text-muted);
-      line-height: 1.75;
-    }
+    strong { font-weight: 700; color: var(--color-text); }
 
-    .step-why strong {
-      color: var(--color-text);
-      font-weight: 600;
-    }
-
-    /* Lists */
     .step-list {
       list-style: none;
+      padding: 0;
+      margin-bottom: 32px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding: 0;
+      gap: 12px;
     }
-
     .step-list li {
-      font-size: 15px;
-      line-height: 1.7;
-      padding-left: 20px;
       position: relative;
-      color: var(--color-text);
+      padding-left: 20px;
     }
-
     .step-list li::before {
       content: '—';
       position: absolute;
       left: 0;
-      color: var(--color-primary-dark);
+      color: var(--color-text-muted); /* More subtle dash */
       font-weight: 400;
     }
-
+    
     code {
       background: var(--color-primary-light);
-      border: 1px solid var(--color-primary-dark);
+      border: none;
       border-radius: 4px;
-      padding: 1px 6px;
+      padding: 2px 6px;
       font-family: monospace;
       font-size: 0.9em;
-    }
-
-    /* Guide box */
-    .guide-box {
-      background: var(--color-primary-light);
-      border-left: 3px solid var(--color-primary-dark);
-      border-radius: 0 12px 12px 0;
-      padding: 20px 24px;
-    }
-
-    .guide-box-header {
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-primary-dark);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .guide-box p {
-      font-size: 14px;
-      line-height: 1.8;
       color: var(--color-text);
     }
 
-    /* Buttons */
+    /* ===== LINKS (외부 링크) ===== */
     .step-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      padding-top: 4px;
+      gap: 16px;
+      margin-top: 16px;
+      margin-bottom: 32px;
     }
-
     .link-btn {
-      display: inline-flex;
+      /* 버튼 형태 제거, 인라인 링크화 */
+      border: none !important;
+      background: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      color: var(--color-text) !important;
+      text-decoration: underline !important;
+      text-underline-offset: 3px !important;
+      text-decoration-color: var(--color-coke-red) !important; /* Underline red */
+      font-family: var(--font-kr) !important;
+      font-weight: 600 !important;
+      font-size: 17px !important;
+      display: inline-block !important;
+      letter-spacing: inherit !important;
+    }
+    .link-btn:hover { color: var(--color-coke-red) !important; }
+    .link-btn .arrow { display: none; }
+
+    /* ===== GUIDE BOX (참여자 가이드 박스 - Puradak Gold Vibe) ===== */
+    .guide-box {
+      border: none;
+      border-radius: 0;
+      border-left: 2px solid var(--color-accent); /* Gold left border */
+      background: rgba(212, 175, 55, 0.08); /* Very faint gold background */
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--color-text);
+    }
+    .guide-box-header {
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
       align-items: center;
-      gap: 7px;
-      background: transparent;
+      gap: 8px;
+      font-size: 14px;
       color: var(--color-text);
-      text-decoration: none;
-      font-family: var(--font-en);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 6px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--color-primary-dark);
-      transition: background 150ms ease, border-color 150ms ease;
-      letter-spacing: 0.01em;
+      font-family: inherit;
+      letter-spacing: normal;
+      text-transform: none;
     }
+    .guide-box p { font-size: 15px; color: var(--color-text); line-height: 1.75; }
 
-    .link-btn:hover {
-      background: var(--color-accent-light);
-      border-color: var(--color-accent);
-    }
-
-    .link-btn .arrow {
-      font-size: 11px;
-      opacity: 0.7;
-    }
-
-    /* ===== FLOW DIAGRAM ===== */
+    /* ===== FLOW (플로우 다이어그램) ===== */
     .flow-section {
-      background: var(--color-bg);
-      color: var(--color-text);
-      padding: 80px 24px;
-      text-align: center;
+      padding: 48px 24px;
       border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .flow-section .section-label {
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      border-bottom: none;
+      font-size: 15px;
       color: var(--color-text-muted);
-      margin-bottom: 14px;
+      background: none;
+      text-align: left;
+      margin-top: 56px;
     }
-
+    .flow-section .section-label { display: none; }
     .flow-section h2 {
-      font-size: clamp(20px, 4vw, 28px);
-      font-weight: 600;
-      margin-bottom: 52px;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--color-text);
+      margin-bottom: 32px;
+      text-align: left;
     }
-
     .flow-diagram {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
-      gap: 0;
-      max-width: 800px;
-      margin: 0 auto 64px;
+      gap: 12px;
+      margin: 0;
     }
-
-    .flow-node {
+    .flow-node { 
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 8px; 
     }
-
-    .flow-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 14px;
-      background: var(--color-primary-light);
-      border: 1.5px solid var(--color-primary-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .flow-icon { 
+      width: 60px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
       font-size: 26px;
+      background: var(--color-surface); /* Black Box */
+      border: 1px solid var(--color-primary-dark);
+      border-radius: 8px;
     }
+    .flow-label { font-size: 12px; font-weight: 600; color: var(--color-text); }
+    .flow-arrow { font-size: 16px; margin-bottom: 22px; padding: 0 4px; color: var(--color-coke-red); }
 
-    .flow-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--color-text);
-      white-space: nowrap;
-    }
-
-    .flow-arrow {
-      font-family: var(--font-en);
-      font-size: 20px;
-      color: var(--color-primary-dark);
-      opacity: 0.6;
-      padding: 0 6px;
-      margin-bottom: 22px;
-    }
-
-    /* ===== RESOURCES ===== */
+    /* ===== RESOURCES (도구 카드) ===== */
     .resources-section {
-      background: var(--color-surface);
-      padding: 80px 24px;
+      padding: 48px 24px 80px;
+      background: none;
+      border-top: 1px solid var(--color-border);
     }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-label {
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 10px;
-    }
-
-    .section-header h2 {
-      font-size: clamp(20px, 4vw, 28px);
-      font-weight: 600;
+    .resources-section .section-header { text-align: left; margin-bottom: 32px; }
+    .resources-section .section-label { display: none; }
+    .resources-section h2 { 
+      font-size: clamp(22px, 3vw, 30px); 
+      font-weight: 700; 
       letter-spacing: -0.02em;
       color: var(--color-text);
     }
 
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
-
+    .tools-grid { display: block; padding: 0; }
+    
     .tool-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 24px;
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+      border-radius: 0;
+      background: none;
+      padding: 24px 0;
+      display: block;
       text-decoration: none;
       color: var(--color-text);
-      transition: border-color 150ms ease, background 150ms ease;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
     }
-
-    .tool-card:hover {
-      border-color: var(--color-primary-dark);
-      background: var(--color-primary-light);
-    }
-
-    .tool-emoji {
-      font-size: 26px;
-      margin-bottom: 4px;
-    }
-
-    .tool-name {
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--color-text);
-    }
-
-    .tool-desc {
-      font-size: 13px;
-      color: var(--color-text-muted);
-      line-height: 1.6;
-    }
-
-    .tool-url {
-      font-family: var(--font-en);
-      font-size: 12px;
-      color: var(--color-text-muted);
-      margin-top: 4px;
-    }
+    .tool-card:last-child { border-bottom: none; }
+    .tool-card:hover { background: none; }
+    .tool-card:hover .tool-name { color: var(--color-coke-red); }
+    .tool-card:hover .tool-desc { color: var(--color-text-muted); }
+    
+    .tool-emoji { font-size: 24px; display: inline-block; margin-right: 8px; margin-bottom: 0; vertical-align: middle;}
+    .tool-name { display: inline-block; font-size: 17px; font-weight: 600; color: var(--color-text); vertical-align: middle; }
+    .tool-desc { font-size: 15px; color: var(--color-text-muted); margin-top: 8px; line-height: 1.6; }
+    .tool-url { display: none; } 
 
     /* ===== FOOTER ===== */
     .site-footer {
-      background: var(--color-text);
-      color: rgba(255,255,255,0.5);
-      text-align: center;
+      border-top: 1px solid var(--color-border);
       padding: 40px 24px;
       font-size: 13px;
+      color: var(--color-text-inverse);
+      text-align: center;
+      background: var(--color-surface); /* Black Box for footer too */
       font-family: var(--font-en);
-      line-height: 1.8;
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
-      .step-header {
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      .header-meta {
-        flex-direction: column;
-        gap: 10px;
-        padding: 14px 20px;
-      }
-
+      .header-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
       .header-meta .divider { display: none; }
-
-      .flow-arrow { padding: 0 4px; font-size: 14px; }
+      
+      .intro-section { padding: 32px 24px; margin: 32px auto; }
+      .flow-diagram { justify-content: space-between; gap: 4px; }
+      .flow-arrow { font-size: 12px; margin-bottom: 14px; padding: 0 2px; }
       .flow-icon { width: 44px; height: 44px; font-size: 18px; }
       .flow-label { font-size: 11px; }
 
-      .progress-step-label { display: none; }
-
-      .tools-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .tools-grid { grid-template-columns: 1fr; }
+      .progress-nav .container { gap: 4px; }
+      .progress-step { padding: 4px; }
+      .progress-step-label { display: block; font-size: 12px; }
     }
 
     /* ===== PRINT ===== */
     @media print {
       .progress-nav { display: none; }
-
-      .step-card {
-        opacity: 1 !important;
-        transform: none !important;
-        page-break-inside: avoid;
-        break-inside: avoid;
-      }
-
-      .site-header {
-        background: var(--color-primary) !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-
-      .site-footer {
-        background: #1a1a1a !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-
-      body { font-size: 13px; }
-
-      .link-btn {
-        border: 1px solid var(--color-border);
-        background: transparent !important;
-      }
-
-      a[href]::after {
-        content: " (" attr(href) ")";
-        font-size: 10px;
-        color: #888;
-      }
-
-      .link-btn::after { display: none; }
+      .step-card { page-break-inside: avoid; break-inside: avoid; }
+      .site-header { background: var(--color-surface) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; color: white !important;}
+      .link-btn { background: transparent !important; text-decoration: underline !important; }
+      a[href]::after { content: " (" attr(href) ")"; font-size: 10px; color: #888; }
     }
   </style>
 </head>
