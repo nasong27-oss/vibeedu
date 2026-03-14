@@ -19,6 +19,9 @@
       --gray-mid: #E8E8ED;
       --gray-text: #6E6E73;
       --black: #000000;
+      --accent: #5865F2;
+      --accent-light: #EEEFFE;
+      --accent-hover: #4650D8;
       --font-kr: 'Noto Sans KR', sans-serif;
       --font-en: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
       --max-w: 900px;
@@ -130,6 +133,7 @@
       font-size: clamp(15px, 2vw, 17px);
       color: #333;
       line-height: 1.8;
+      text-align: left;
     }
 
     .intro-section p + p {
@@ -173,12 +177,12 @@
 
     .progress-step:hover .progress-dot,
     .progress-step.active .progress-dot {
-      background: var(--black);
+      background: var(--accent);
       transform: scale(1.4);
     }
 
     .progress-step.done .progress-dot {
-      background: #555;
+      background: #9ba4f8;
     }
 
     .progress-step-label {
@@ -260,8 +264,8 @@
     }
 
     .step-checkbox.checked {
-      background-color: var(--black);
-      border-color: var(--black);
+      background-color: var(--accent);
+      border-color: var(--accent);
     }
 
     .step-card.climax .step-checkbox.checked {
@@ -293,7 +297,7 @@
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.04em;
-      color: var(--black);
+      color: var(--accent);
       margin-bottom: 6px;
     }
 
@@ -402,8 +406,8 @@
 
     /* Guide box */
     .guide-box {
-      background: #F0F0F5;
-      border-left: 3px solid #999;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
       border-radius: 0 12px 12px 0;
       padding: 20px 24px;
     }
@@ -419,7 +423,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #555;
+      color: var(--accent);
       margin-bottom: 10px;
       display: flex;
       align-items: center;
@@ -433,7 +437,7 @@
     .guide-box p {
       font-size: 14px;
       line-height: 1.8;
-      color: #444;
+      color: #333;
     }
 
     .step-card.climax .guide-box p {
@@ -452,7 +456,7 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background-color: var(--black);
+      background-color: var(--accent);
       color: var(--white);
       text-decoration: none;
       font-family: var(--font-en);
@@ -465,7 +469,7 @@
     }
 
     .link-btn:hover {
-      background-color: #3a3a3a;
+      background-color: var(--accent-hover);
     }
 
     .step-card.climax .link-btn {
@@ -528,20 +532,20 @@
     }
 
     .flow-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: var(--gray-light);
-      border: 1px solid var(--gray-mid);
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background: var(--accent-light);
+      border: 1.5px solid #c5cafc;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 26px;
     }
 
     .flow-label {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--black);
       white-space: nowrap;
     }
@@ -549,8 +553,9 @@
     .flow-arrow {
       font-family: var(--font-en);
       font-size: 20px;
-      color: #bbb;
-      padding: 0 8px;
+      color: var(--accent);
+      opacity: 0.35;
+      padding: 0 6px;
       margin-bottom: 22px;
     }
 
@@ -740,7 +745,7 @@
   <div class="intro-section">
     <p class="intro-label">About this guide</p>
     <p>이 교안은 교육 후 참여자가 혼자서도 따라할 수 있도록 작성되었습니다.</p>
-    <p>시연할 전체 과정을 단계별로 정리했으며, 링크와 설명을 따라가면 코딩 경험 없이도 나만의 웹사이트를 만들고 배포할 수 있습니다.<br />스마트폰만으로도 이 모든 것이 가능합니다. 일단 시작해 보세요.</p>
+    <p>시연할 전체 과정을 단계별로 정리했으며, 링크와 설명을 따라가면 코딩 경험 없이도 나만의 웹사이트를 만들고 배포할 수 있습니다.</p>
   </div>
 
   <!-- ===== PROGRESS NAV ===== -->
@@ -1045,7 +1050,7 @@
               Gemini에 이렇게 요청해보세요 →<br />
               <strong>"바이브코딩 툴에 넣을 프롬프트를 작성해줘. 만들고 싶은 것: [내용]. 포함할 기능: [기능]. 디자인 스타일: [스타일]."</strong><br /><br />
               프롬프트는 자세할 수록 좋습니다. 원하는 색상, 레이아웃, 언어(한국어 등)까지 구체적으로 적으면 AI가 더 정확하게 만들어줍니다.<br /><br />
-              <strong>모델 선택 팁:</strong> Gemini 입력창 왼쪽 하단의 모델 선택 버튼에서 <strong>Gemini 2.5 Pro</strong> 또는 <strong>2.0 Flash</strong> 등을 선택할 수 있습니다. 복잡한 프롬프트 작성에는 Pro 모델이 더 정교한 결과를 냅니다.
+              <strong>모델 선택 팁:</strong> 입력창 하단의 모델 선택 버튼에서 원하는 모델을 고를 수 있습니다. <strong>2.0 Flash</strong>는 응답이 빠르고 가볍게 쓰기 좋으며, <strong>2.5 Pro</strong>는 복잡한 요청에 더 정교한 결과를 냅니다. 빠르게 초안을 뽑을 땐 Flash, 세밀한 프롬프트 작성엔 Pro를 활용해 보세요.
             </p>
           </div>
         </div>
@@ -1149,8 +1154,7 @@
               <span>💡</span> 참여자 가이드
             </p>
             <p>
-              Vercel 외에도 프로젝트 성격에 따라 최적화된 배포 플랫폼이 있습니다. React/Next.js는 Vercel이 가장 잘 맞고, Python 백엔드라면 <strong>Railway</strong>나 <strong>Render</strong>, 정적 사이트는 <strong>Netlify</strong>나 <strong>GitHub Pages</strong>도 좋은 선택입니다. 어떤 코드를 만드느냐에 따라 플랫폼을 고르면 됩니다.<br /><br />
-              <span style="font-size: 13px; color: #888;">※ 나만의 도메인(예: myname.com) 연결은 가비아, 호스팅케이알 등에서 도메인을 구매한 뒤 각 플랫폼 대시보드에서 설정할 수 있습니다.</span>
+              Vercel 외에도 프로젝트 성격에 따라 최적화된 배포 플랫폼이 있습니다. React/Next.js는 Vercel이 가장 잘 맞고, Python 백엔드라면 <strong>Railway</strong>나 <strong>Render</strong>, 정적 사이트는 <strong>Netlify</strong>나 <strong>GitHub Pages</strong>도 좋은 선택입니다. 어떤 코드를 만드느냐에 따라 플랫폼을 고르면 됩니다.
             </p>
           </div>
         </div>
