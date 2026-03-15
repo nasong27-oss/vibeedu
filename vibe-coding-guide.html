@@ -593,6 +593,74 @@
       .progress-step { padding: 12px 8px; }
     }
 
+    /* ===== ADMIN ===== */
+    #admin-btn {
+      position: fixed; top: 12px; right: 16px; z-index: 9999;
+      background: transparent; color: #bbb; border: 1px solid #ddd;
+      font-size: 11px; padding: 4px 10px; border-radius: 4px; cursor: pointer;
+      font-family: var(--font-en); letter-spacing: 0.05em; transition: color 0.15s, border-color 0.15s;
+    }
+    #admin-btn:hover { color: #555; border-color: #aaa; }
+
+    #admin-modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55); z-index: 10000;
+      align-items: center; justify-content: center;
+    }
+    #admin-modal.open { display: flex; }
+    #admin-modal-inner {
+      background: #fff; padding: 32px 28px; border-radius: 8px;
+      min-width: 300px; display: flex; flex-direction: column; gap: 10px;
+      font-family: var(--font-kr);
+    }
+    #admin-modal-inner > p:first-child { font-weight: 600; font-size: 15px; margin: 0; }
+    #admin-pw {
+      padding: 9px 12px; border: 1px solid #ddd; border-radius: 4px;
+      font-size: 15px; outline: none;
+    }
+    #admin-pw:focus { border-color: #18181B; }
+    #admin-pw-error { color: #E50014; font-size: 13px; min-height: 16px; margin: 0; }
+    #admin-pw-submit {
+      padding: 9px; background: #18181B; color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-family: var(--font-kr);
+    }
+    #admin-pw-submit:hover { background: #333; }
+
+    #admin-bar {
+      display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 9998;
+      background: #18181B; color: rgba(255,255,255,0.65);
+      padding: 10px 20px; align-items: center; gap: 10px;
+      font-size: 12px; font-family: var(--font-en);
+    }
+    #admin-bar.open { display: flex; }
+    #admin-bar-label { flex: 1; font-size: 12px; }
+    #admin-save {
+      padding: 6px 16px; background: #E50014; color: #fff;
+      border: none; border-radius: 4px; cursor: pointer; font-size: 12px;
+      font-weight: 600; font-family: var(--font-en);
+    }
+    #admin-save:hover { background: #c40010; }
+    #admin-copy-prompt {
+      padding: 6px 14px; background: rgba(212,175,55,0.15); color: #D4AF37;
+      border: 1px solid rgba(212,175,55,0.4); border-radius: 4px;
+      cursor: pointer; font-size: 12px; font-family: var(--font-en);
+    }
+    #admin-copy-prompt:hover { background: rgba(212,175,55,0.25); }
+    #admin-cancel {
+      padding: 6px 14px; background: transparent; color: rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
+      cursor: pointer; font-size: 12px; font-family: var(--font-en);
+    }
+
+    body.admin-mode { padding-top: 44px; }
+    body.admin-mode [data-editable] { cursor: text; }
+    body.admin-mode [data-editable]:hover {
+      outline: 2px dashed rgba(229,0,20,0.35); outline-offset: 3px;
+    }
+    body.admin-mode [data-editable]:focus {
+      outline: 2px solid #E50014; outline-offset: 3px;
+    }
+
     /* ===== PRINT ===== */
     @media print {
       .progress-nav { display: none; }
@@ -645,8 +713,8 @@
   <!-- ===== INTRO ===== -->
   <div class="intro-section">
     <div class="inner">
-      <p>이 교안은 교육 후 참여자가 혼자서도 따라할 수 있도록 작성되었습니다.</p>
-      <p>시연할 전체 과정을 단계별로 정리했으며, 링크와 설명을 따라가면 코딩 경험 없이도 나만의 웹사이트를 만들고 배포할 수 있습니다.</p>
+      <p data-editable="intro-1">이 교안은 교육 후 참여자가 혼자서도 따라할 수 있도록 작성되었습니다.</p>
+      <p data-editable="intro-2">시연할 전체 과정을 단계별로 정리했으며, 링크와 설명을 따라가면 코딩 경험 없이도 나만의 웹사이트를 만들고 배포할 수 있습니다.</p>
     </div>
   </div>
 
@@ -700,22 +768,22 @@
           <div class="step-title-group">
             <p class="step-number">1단계</p>
             <div class="step-title-row">
-              <h2 class="step-title">바이브코딩 맛보기</h2>
+              <h2 class="step-title" data-editable="step-01-title">바이브코딩 맛보기</h2>
             </div>
             <p class="step-duration">⏱ 15분</p>
           </div>
         </div>
 
         <div class="step-body">
-          <p class="step-desc">
+          <p class="step-desc" data-editable="step-01-desc">
             AI에게 요청하면 즉시 코드가 만들어진다는 것을 체감합니다. 지금부터 배울 과정은 여기서 한 걸음 더 나아가 <strong>'내 것으로 배포'</strong>까지 하는 것입니다.
           </p>
 
-          <p class="step-why">
+          <p class="step-why" data-editable="step-01-why">
             "코딩을 몰라도 된다"는 말이 실제로 가능한지 눈으로 확인하는 단계입니다. 두려움을 없애고, 이후 단계에서 무엇을 향해 나아가는지 맥락을 잡는 시간입니다.
           </p>
 
-          <ul class="step-list">
+          <ul class="step-list" data-editable="step-01-list">
             <li>Replit으로 간단한 웹앱을 직접 생성</li>
             <li>Google AI 스튜디오에 요청해 결과물이 생성되는 모습 확인</li>
             <li>"AI에게 요청하면 코드가 나온다"는 개념을 체감</li>
@@ -735,7 +803,7 @@
             <p class="guide-box-header">
               <span>💡</span> Tip
             </p>
-            <p>
+            <p data-editable="step-01-tip">
               Replit과 AI 스튜디오는 빠르게 체험하기 좋은 도구입니다. 다만 크레딧 소진 방식이라 사용할수록 비용이 발생하고, 결과물을 내 것으로 보관하거나 지속 운영하기도 번거롭습니다. 이후 단계에서 배우는 <strong>GitHub + 안티그래비티 + Vercel</strong> 조합은 비용 부담이 적고 실제 서비스 운영에 더 가까운 방식입니다.
             </p>
           </div>
@@ -750,22 +818,22 @@
           <div class="step-title-group">
             <p class="step-number">2단계</p>
             <div class="step-title-row">
-              <h2 class="step-title">GitHub 가입 및 레포 생성</h2>
+              <h2 class="step-title" data-editable="step-02-title">GitHub 가입 및 레포 생성</h2>
             </div>
             <p class="step-duration">⏱ 10분</p>
           </div>
         </div>
 
         <div class="step-body">
-          <p class="step-desc">
+          <p class="step-desc" data-editable="step-02-desc">
             내 코드를 저장하고 관리하는 공간을 만듭니다. 이후 모든 배포와 코딩 툴이 이 GitHub 계정과 연결됩니다.
           </p>
 
-          <p class="step-why">
+          <p class="step-why" data-editable="step-02-why">
             GitHub은 코드의 저장소입니다. AI가 만들어준 코드를 저장하고, Vercel 같은 배포 도구가 이 저장소에서 코드를 읽어 자동으로 웹사이트를 배포합니다. 모든 흐름의 중심입니다.
           </p>
 
-          <ul class="step-list">
+          <ul class="step-list" data-editable="step-02-list">
             <li>GitHub은 코드 파일을 저장·버전 관리하는 플랫폼</li>
             <li>github.com에서 이메일로 무료 회원가입</li>
             <li>상단 "+" 버튼 → "New repository" 클릭</li>
@@ -784,7 +852,7 @@
             <p class="guide-box-header">
               <span>💡</span> Tip
             </p>
-            <p>
+            <p data-editable="step-02-tip">
               레포지터리 이름은 영문 소문자와 하이픈(-)만 사용하세요. 예: <strong>my-portfolio</strong>, <strong>vibe-web</strong>. 생성 시 <strong>"Public"</strong>과 <strong>"Add a README file"</strong> 옵션을 반드시 체크하세요. 이후 Vercel 연결 시 레포가 Public이어야 무료로 배포할 수 있습니다.
             </p>
           </div>
@@ -799,22 +867,22 @@
           <div class="step-title-group">
             <p class="step-number">3단계</p>
             <div class="step-title-row">
-              <h2 class="step-title">안티그래비티에 GitHub 연결</h2>
+              <h2 class="step-title" data-editable="step-03-title">안티그래비티에 GitHub 연결</h2>
             </div>
             <p class="step-duration">⏱ 10분</p>
           </div>
         </div>
 
         <div class="step-body">
-          <p class="step-desc">
+          <p class="step-desc" data-editable="step-03-desc">
             AI 코딩 툴이 내 GitHub 레포에 직접 코드를 올릴 수 있도록 연결합니다.
           </p>
 
-          <p class="step-why">
+          <p class="step-why" data-editable="step-03-why">
             안티그래비티는 Google AI Pro 기반의 바이브코딩 툴입니다. 이 툴이 내 GitHub 저장소에 접근할 수 있어야, AI가 생성한 코드가 자동으로 저장소에 반영되고 이후 Vercel이 그 코드를 배포할 수 있습니다.
           </p>
 
-          <ul class="step-list">
+          <ul class="step-list" data-editable="step-03-list">
             <li>antigravity.so 접속 → Google 계정으로 로그인</li>
             <li>로그인 후 "GitHub 연결" 또는 연동 메뉴 진입</li>
             <li>GitHub 권한 허용 화면에서 "All repositories" 또는 특정 레포 선택 가능</li>
@@ -832,7 +900,7 @@
             <p class="guide-box-header">
               <span>💡</span> Tip
             </p>
-            <p>
+            <p data-editable="step-03-tip">
               안티그래비티 연결 순서: <strong>Google 계정 로그인 → GitHub 권한 허용</strong>. GitHub 연결 시 "All repositories" 대신 방금 만든 레포만 선택해도 됩니다. 워크스페이스 생성 후 오른쪽 상단에 연결된 레포 이름이 표시되면 정상적으로 연결된 상태입니다.
             </p>
           </div>
@@ -847,22 +915,22 @@
           <div class="step-title-group">
             <p class="step-number">4단계</p>
             <div class="step-title-row">
-              <h2 class="step-title">Vercel 가입 및 GitHub 연결</h2>
+              <h2 class="step-title" data-editable="step-04-title">Vercel 가입 및 GitHub 연결</h2>
             </div>
             <p class="step-duration">⏱ 10분</p>
           </div>
         </div>
 
         <div class="step-body">
-          <p class="step-desc">
+          <p class="step-desc" data-editable="step-04-desc">
             GitHub에 올라온 코드를 자동으로 인터넷에 공개하는 배포 자동화를 설정합니다.
           </p>
 
-          <p class="step-why">
+          <p class="step-why" data-editable="step-04-why">
             GitHub 저장소를 연결해두면, 이후 코드가 변경될 때마다 자동으로 최신 버전의 웹사이트를 배포합니다. 별도 서버 설정이나 배포 버튼을 누를 필요가 없습니다.
           </p>
 
-          <ul class="step-list">
+          <ul class="step-list" data-editable="step-04-list">
             <li>vercel.com 접속 → "Start Deploying" 또는 "Sign Up" 클릭</li>
             <li>GitHub 계정으로 바로 가입 (별도 이메일 불필요)</li>
             <li>"Import Git Repository" → 2단계에서 만든 레포 선택</li>
@@ -880,7 +948,7 @@
             <p class="guide-box-header">
               <span>💡</span> Tip
             </p>
-            <p>
+            <p data-editable="step-04-tip">
               Vercel은 GitHub 계정으로 바로 가입할 수 있습니다. 프로젝트 연결 시 "Import Git Repository"에서 방금 만든 레포를 선택하면 됩니다. 이후에는 안티그래비티에서 코드를 수정할 때마다 Vercel이 자동으로 감지해 새 버전을 배포합니다.
             </p>
           </div>
@@ -895,22 +963,22 @@
           <div class="step-title-group">
             <p class="step-number">5단계</p>
             <div class="step-title-row">
-              <h2 class="step-title">프롬프트 만들기</h2>
+              <h2 class="step-title" data-editable="step-05-title">프롬프트 만들기</h2>
             </div>
             <p class="step-duration">⏱ 15분</p>
           </div>
         </div>
 
         <div class="step-body">
-          <p class="step-desc">
+          <p class="step-desc" data-editable="step-05-desc">
             AI에게 잘 전달하는 것이 결과물 품질을 결정합니다. Gemini를 활용해 구조화된 프롬프트 작성법을 익힙니다.
           </p>
 
-          <p class="step-why">
+          <p class="step-why" data-editable="step-05-why">
             "웹사이트 만들어줘"와 "개인 포트폴리오 사이트, 다크모드, 자기소개·프로젝트·연락처 섹션 포함, 심플한 디자인"은 전혀 다른 결과를 만듭니다. 구체적인 프롬프트가 원하는 결과물의 첫 번째 조건입니다.
           </p>
 
-          <ul class="step-list">
+          <ul class="step-list" data-editable="step-05-list">
             <li>좋은 프롬프트의 5가지 요소: <strong>목적 / 대상 / 기능 / 디자인 스타일 / 기술 스펙</strong></li>
             <li>Gemini에 프롬프트 초안 작성을 요청하는 방식 시연</li>
             <li>예시 요청: "개인 포트폴리오 웹사이트, 심플한 디자인, 다크모드, 자기소개/프로젝트/연락처 섹션 포함"</li>
@@ -928,7 +996,7 @@
             <p class="guide-box-header">
               <span>💡</span> Tip
             </p>
-            <p>
+            <p data-editable="step-05-tip">
               Gemini에 이렇게 요청해보세요 →<br />
               <strong>"바이브코딩 툴에 넣을 프롬프트를 작성해줘. 만들고 싶은 것: [내용]. 포함할 기능: [기능]. 디자인 스타일: [스타일]."</strong><br /><br />
               프롬프트는 자세할 수록 좋습니다. 원하는 색상, 레이아웃, 언어(한국어 등)까지 구체적으로 적으면 AI가 더 정확하게 만들어줍니다.<br /><br />
@@ -946,22 +1014,22 @@
           <div class="step-title-group">
             <p class="step-number">6단계</p>
             <div class="step-title-row">
-              <h2 class="step-title">안티그래비티로 코딩 요청</h2>
+              <h2 class="step-title" data-editable="step-06-title">안티그래비티로 코딩 요청</h2>
             </div>
             <p class="step-duration">⏱ 15분</p>
           </div>
         </div>
 
         <div class="step-body">
-          <p class="step-desc">
+          <p class="step-desc" data-editable="step-06-desc">
             준비한 프롬프트로 실제 코드를 생성하고, GitHub에 반영되는 과정을 실시간으로 확인합니다.
           </p>
 
-          <p class="step-why">
+          <p class="step-why" data-editable="step-06-why">
             이 단계가 바이브코딩의 핵심입니다. AI에게 의도를 전달하고, 결과를 보고, 다시 요청해 완성도를 높여가는 반복 과정이 실제 작업 방식이 됩니다.
           </p>
 
-          <ul class="step-list">
+          <ul class="step-list" data-editable="step-06-list">
             <li>안티그래비티 워크스페이스에 5단계에서 만든 프롬프트 입력</li>
             <li>AI가 코드를 생성하는 과정 실시간 관찰</li>
             <li>GitHub 레포에 코드가 올라가는 것 직접 확인</li>
@@ -979,7 +1047,7 @@
             <p class="guide-box-header">
               <span>💡</span> Tip
             </p>
-            <p>
+            <p data-editable="step-06-tip">
               첫 결과물이 마음에 들지 않아도 괜찮습니다. <strong>"버튼 색을 검정으로 바꿔줘"</strong>, <strong>"상단에 메뉴를 추가해줘"</strong>처럼 추가 요청을 반복하면서 완성도를 높여가는 게 바이브코딩의 핵심 방식입니다. 한 번에 완벽할 필요 없습니다.
             </p>
           </div>
@@ -994,22 +1062,22 @@
           <div class="step-title-group">
             <p class="step-number">7단계</p>
             <div class="step-title-row">
-              <h2 class="step-title">Vercel로 배포</h2>
+              <h2 class="step-title" data-editable="step-07-title">Vercel로 배포</h2>
             </div>
             <p class="step-duration">⏱ 15분</p>
           </div>
         </div>
 
         <div class="step-body">
-          <p class="step-desc">
+          <p class="step-desc" data-editable="step-07-desc">
             GitHub에 올라간 코드를 눈으로 확인하고 실제로 배포하는 마지막 단계입니다.
           </p>
 
-          <p class="step-why">
+          <p class="step-why" data-editable="step-07-why">
             코드가 아무리 잘 만들어져도, 공개 URL이 없으면 아무도 볼 수 없습니다. Vercel이 그 코드를 인터넷에 공개하고, 이후에도 코드가 바뀔 때마다 자동으로 최신 버전을 배포합니다.
           </p>
 
-          <ul class="step-list">
+          <ul class="step-list" data-editable="step-07-list">
             <li>Vercel 대시보드에서 자동 배포 완료 상태 확인</li>
             <li>생성된 <code>*.vercel.app</code> URL 접속 시연 — 나만의 웹사이트 공개!</li>
             <li>도메인 연결 개념 소개 (선택사항 — 가비아, 호스팅케이알 등)</li>
@@ -1027,7 +1095,7 @@
             <p class="guide-box-header">
               <span>💡</span> Tip
             </p>
-            <p>
+            <p data-editable="step-07-tip">
               Vercel 외에도 프로젝트 성격에 따라 최적화된 배포 플랫폼이 있습니다. React/Next.js는 Vercel이 가장 잘 맞고, Python 백엔드라면 <strong>Railway</strong>나 <strong>Render</strong>, 정적 사이트는 <strong>Netlify</strong>나 <strong>GitHub Pages</strong>도 좋은 선택입니다. 어떤 코드를 만드느냐에 따라 플랫폼을 고르면 됩니다.
             </p>
           </div>
@@ -1041,7 +1109,7 @@
   <section class="flow-section">
     <div class="inner">
     <p class="section-label">Today's Journey</p>
-    <h2>오늘 경험한 전체 흐름</h2>
+    <h2 data-editable="flow-title">오늘 경험한 전체 흐름</h2>
 
     <div class="flow-diagram" role="img" aria-label="아이디어에서 URL까지의 흐름">
       <div class="flow-node">
@@ -1082,7 +1150,7 @@
     <div class="container">
       <div class="section-header">
         <p class="section-label">All Tools</p>
-        <h2>오늘 사용한 도구 모음</h2>
+        <h2 data-editable="resources-title">오늘 사용한 도구 모음</h2>
       </div>
 
       <div class="tools-grid">
@@ -1168,6 +1236,155 @@
     }, { threshold: 0.5 });
 
     stepEls.forEach(el => navObserver.observe(el));
+  </script>
+
+  <button id="admin-btn">수정</button>
+
+  <div id="admin-modal">
+    <div id="admin-modal-inner">
+      <p>관리자 비밀번호</p>
+      <input type="password" id="admin-pw" placeholder="비밀번호 입력" />
+      <p id="admin-pw-error"></p>
+      <button id="admin-pw-submit">확인</button>
+    </div>
+  </div>
+
+  <div id="admin-bar">
+    <span id="admin-bar-label">✏️ 편집 모드</span>
+    <button id="admin-copy-prompt">📋 프롬프트 복사</button>
+    <button id="admin-save">저장</button>
+    <button id="admin-cancel">취소</button>
+  </div>
+
+  <script>
+  // ===== ADMIN EDIT MODE =====
+  (function() {
+    const ADMIN_PW = 'nasongvibe';
+    const STORAGE_KEY = 'vibe-admin-edits-v1';
+    const originals = {};
+
+    document.querySelectorAll('[data-editable]').forEach(el => {
+      originals[el.dataset.editable] = el.innerHTML;
+    });
+
+    function loadStoredEdits() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        Object.entries(saved).forEach(([key, html]) => {
+          const el = document.querySelector('[data-editable="' + key + '"]');
+          if (el) el.innerHTML = html;
+        });
+      } catch(e) {}
+    }
+    loadStoredEdits();
+
+    function enterAdminMode() {
+      document.body.classList.add('admin-mode');
+      document.getElementById('admin-bar').classList.add('open');
+      document.getElementById('admin-btn').style.display = 'none';
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        el.contentEditable = 'true';
+      });
+    }
+
+    function exitAdminMode() {
+      document.body.classList.remove('admin-mode');
+      document.getElementById('admin-bar').classList.remove('open');
+      document.getElementById('admin-btn').style.display = '';
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        el.contentEditable = 'false';
+      });
+    }
+
+    function saveEdits() {
+      const edits = {};
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        edits[el.dataset.editable] = el.innerHTML;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(edits));
+      const btn = document.getElementById('admin-save');
+      btn.textContent = '✅ 저장됨';
+      setTimeout(() => { btn.textContent = '저장'; }, 1800);
+    }
+
+    function getPlain(html) {
+      const d = document.createElement('div');
+      d.innerHTML = html;
+      return d.innerText.replace(/\s+/g, ' ').trim();
+    }
+
+    function copyPrompt() {
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+
+      const changes = [];
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        const key = el.dataset.editable;
+        const currentHTML = el.innerHTML;
+        const savedHTML = saved[key] || originals[key];
+        if (currentHTML.trim() !== savedHTML.trim()) {
+          changes.push({ key, before: getPlain(savedHTML), after: getPlain(currentHTML) });
+        }
+      });
+
+      if (changes.length === 0) {
+        alert('저장된 내용과 차이가 없습니다. 수정 후 복사하세요.');
+        return;
+      }
+
+      let prompt = 'vibe-coding-guide.html에서 다음 텍스트를 수정해주세요:\n\n';
+      changes.forEach(function(c) {
+        prompt += '[' + c.key + ']\n변경 전: "' + c.before + '"\n변경 후: "' + c.after + '"\n\n';
+      });
+      prompt += '각 항목을 찾아서 해당 텍스트만 정확히 교체해주세요. 커밋 후 푸시까지 해주세요.';
+
+      navigator.clipboard.writeText(prompt).then(() => {
+        const btn = document.getElementById('admin-copy-prompt');
+        btn.textContent = '✅ 복사됨!';
+        setTimeout(() => { btn.textContent = '📋 프롬프트 복사'; }, 2000);
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = prompt;
+        ta.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;height:50%;z-index:99999;padding:16px;font-size:13px;border:2px solid #E50014;border-radius:8px;';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.focus();
+        alert('자동 복사가 실패했습니다. 텍스트를 직접 복사해주세요.');
+        setTimeout(() => ta.remove(), 10000);
+      });
+    }
+
+    function cancelEdits() {
+      loadStoredEdits();
+      exitAdminMode();
+    }
+
+    document.getElementById('admin-btn').addEventListener('click', () => {
+      document.getElementById('admin-modal').classList.add('open');
+      document.getElementById('admin-pw').value = '';
+      document.getElementById('admin-pw-error').textContent = '';
+      requestAnimationFrame(() => document.getElementById('admin-pw').focus());
+    });
+
+    document.getElementById('admin-pw-submit').addEventListener('click', () => {
+      if (document.getElementById('admin-pw').value === ADMIN_PW) {
+        document.getElementById('admin-modal').classList.remove('open');
+        enterAdminMode();
+      } else {
+        document.getElementById('admin-pw-error').textContent = '비밀번호가 틀렸습니다.';
+        document.getElementById('admin-pw').select();
+      }
+    });
+
+    document.getElementById('admin-pw').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('admin-pw-submit').click();
+      if (e.key === 'Escape') document.getElementById('admin-modal').classList.remove('open');
+    });
+
+    document.getElementById('admin-save').addEventListener('click', saveEdits);
+    document.getElementById('admin-copy-prompt').addEventListener('click', copyPrompt);
+    document.getElementById('admin-cancel').addEventListener('click', cancelEdits);
+  })();
   </script>
 
 </body>
