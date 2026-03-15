@@ -520,30 +520,25 @@
     }
 
     .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-direction: column;
       gap: 0;
-      border-top: 1px solid var(--color-border);
-      border-left: 1px solid var(--color-border);
     }
 
     .tool-card {
       background: none;
       border: none;
-      border-bottom: 1px solid var(--color-border);
-      border-right: 1px solid var(--color-border);
+      border-top: 1px solid var(--color-border);
       border-radius: 0;
-      padding: 16px 18px;
+      padding: 18px 0;
       text-decoration: none;
       color: var(--color-text);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: background 150ms ease;
+      display: block;
+      transition: color 150ms ease;
     }
 
-    .tool-card:hover {
-      background: var(--color-primary-light);
+    .tool-card:last-child {
+      border-bottom: 1px solid var(--color-border);
     }
 
     .tool-card:hover .tool-name {
@@ -551,36 +546,22 @@
     }
 
     .tool-emoji {
-      font-size: 22px;
-      flex-shrink: 0;
-      line-height: 1;
+      font-size: 20px;
+      margin-bottom: 4px;
     }
-
-    .tool-info { min-width: 0; }
 
     .tool-name {
       font-weight: 600;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--color-text);
       transition: color 150ms ease;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .tool-desc {
-      font-size: 11px;
+      font-size: 13px;
       color: var(--color-text-muted);
-      line-height: 1.5;
-      margin-top: 1px;
-    }
-
-    .tool-url {
-      font-family: var(--font-en);
-      font-size: 10px;
-      color: var(--color-text-muted);
-      margin-top: 2px;
-      opacity: 0.7;
+      line-height: 1.6;
+      margin-top: 3px;
     }
 
     /* ===== FOOTER ===== */
@@ -1180,56 +1161,38 @@
       <div class="tools-grid">
         <a href="https://replit.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">💻</div>
-          <div class="tool-info">
-            <div class="tool-name">Replit</div>
-            <div class="tool-desc">브라우저에서 바로 AI 코딩 체험</div>
-            <div class="tool-url">replit.com</div>
-          </div>
+          <div class="tool-name">Replit</div>
+          <div class="tool-desc">브라우저에서 바로 AI 코딩 체험</div>
         </a>
 
         <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">🔮</div>
-          <div class="tool-info">
-            <div class="tool-name">Google AI Studio</div>
-            <div class="tool-desc">Gemini 모델로 결과물을 즉시 생성</div>
-            <div class="tool-url">aistudio.google.com</div>
-          </div>
+          <div class="tool-name">Google AI Studio</div>
+          <div class="tool-desc">Gemini 모델로 결과물을 즉시 생성</div>
         </a>
 
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">🐙</div>
-          <div class="tool-info">
-            <div class="tool-name">GitHub</div>
-            <div class="tool-desc">코드 파일을 저장·버전 관리하는 플랫폼</div>
-            <div class="tool-url">github.com</div>
-          </div>
+          <div class="tool-name">GitHub</div>
+          <div class="tool-desc">코드 파일을 저장·버전 관리하는 플랫폼</div>
         </a>
 
         <a href="https://antigravity.google" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">🚀</div>
-          <div class="tool-info">
-            <div class="tool-name">안티그래비티</div>
-            <div class="tool-desc">Google AI Pro 기반 바이브코딩 툴. GitHub 직접 연동</div>
-            <div class="tool-url">antigravity.google</div>
-          </div>
+          <div class="tool-name">안티그래비티</div>
+          <div class="tool-desc">Google AI Pro 기반 바이브코딩 툴. GitHub 직접 연동</div>
         </a>
 
         <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">▲</div>
-          <div class="tool-info">
-            <div class="tool-name">Vercel</div>
-            <div class="tool-desc">GitHub 연동 자동 배포 플랫폼</div>
-            <div class="tool-url">vercel.com</div>
-          </div>
+          <div class="tool-name">Vercel</div>
+          <div class="tool-desc">GitHub 연동 자동 배포 플랫폼</div>
         </a>
 
         <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">✨</div>
-          <div class="tool-info">
-            <div class="tool-name">Gemini</div>
-            <div class="tool-desc">프롬프트 작성 보조 AI. Flash·Pro·Thinking 모델 선택 가능</div>
-            <div class="tool-url">gemini.google.com</div>
-          </div>
+          <div class="tool-name">Gemini</div>
+          <div class="tool-desc">프롬프트 작성 보조 AI. Flash·Pro·Thinking 모델 선택 가능</div>
         </a>
       </div>
     </div>
@@ -1239,8 +1202,9 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-text">
-        <p>바이브코딩 입문 교안 &nbsp;·&nbsp; 코딩 경험 없이 나만의 웹사이트를 만드는 7단계</p>
-        <p style="margin-top: 8px; font-size: 12px; opacity: 0.45;">이 페이지는 클로드코드, 안티그래비티, Vercel을 활용해 제작되었습니다. &nbsp;<a href="mailto:nasong27@gmail.com">nasong27@gmail.com</a></p>
+        <p>바이브코딩 입문 &nbsp;—&nbsp; 코딩 경험 없이 나만의 웹사이트를 만드는 7단계</p>
+        <p style="margin-top: 8px; font-size: 12px; opacity: 0.55;">이 페이지는 Claude Code / Anti Gravity로 코딩 후 Vercel로 배포하였습니다.</p>
+        <p style="margin-top: 4px; font-size: 12px; opacity: 0.4;"><a href="mailto:nasong27@gmail.com">nasong27@gmail.com</a></p>
       </div>
       <button id="admin-btn">수정</button>
     </div>
