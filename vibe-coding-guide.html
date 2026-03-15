@@ -15,18 +15,21 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --color-primary:       #EFD46A;
-      --color-primary-light: #FAF0C8;
-      --color-primary-dark:  #D4B84A;
-      --color-accent:        #E0A870;
-      --color-accent-light:  #F9EBD8;
-      --color-bg:            #FAFAF6;
-      --color-surface:       #F2EFE4;
-      --color-text:          #3C3830;
-      --color-text-muted:    #7A7060;
-      --color-border:        #D4D0C4;
-      --white: #FFFFFF;
-      --black: #000000;
+      /* Puradak Box Black · Coke Red · Gold */
+      --color-primary:       #18181B;   /* Black */
+      --color-primary-light: #F4F4F5;   /* Light Gray */
+      --color-primary-dark:  #09090A;   /* Deep Black */
+      --color-accent:        #D4AF37;   /* Puradak Gold */
+      --color-accent-light:  #FEF3C7;   /* Light Gold */
+      --color-red:           #E50014;   /* Coke Red */
+
+      --color-bg:            #FFFFFF;   /* White */
+      --color-surface:       #18181B;   /* Black Surface */
+      --color-text:          #18181B;   /* Main text */
+      --color-text-inverse:  #F4F4F5;   /* Text on black */
+      --color-text-muted:    #71717A;   /* Muted */
+      --color-border:        #E4E4E7;   /* Light border */
+
       --font-kr: 'Pretendard', 'Noto Sans KR', sans-serif;
       --font-en: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
       --max-w: 720px;
@@ -53,35 +56,46 @@
 
     /* ===== HEADER ===== */
     .site-header {
-      background: var(--color-primary);
-      color: var(--color-text);
-      padding: 72px 0 64px;
+      background: var(--color-surface);
+      padding: 64px 24px 48px;
+    }
+
+    .site-header .eyebrow,
+    .site-header h1,
+    .site-header .subtitle,
+    .site-header .header-meta {
+      max-width: calc(var(--max-w) - 48px);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .site-header .eyebrow {
       font-family: var(--font-en);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #7A6000;
-      margin-bottom: 18px;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 16px;
     }
 
     .site-header h1 {
-      font-size: clamp(32px, 6vw, 52px);
-      font-weight: 600;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-      color: var(--color-text);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      color: var(--color-text-inverse);
     }
 
     .site-header .subtitle {
-      font-size: clamp(15px, 2.5vw, 18px);
+      font-size: 17px;
       font-weight: 400;
-      color: #7A6000;
-      margin-bottom: 28px;
+      color: var(--color-text-inverse);
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-bottom: 24px;
     }
 
     .header-meta {
@@ -90,45 +104,45 @@
       gap: 16px;
       font-family: var(--font-en);
       font-size: 13px;
-      color: #5C4800;
+      color: var(--color-accent);
       letter-spacing: 0.03em;
     }
 
     .header-meta span {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .header-meta .divider {
       width: 1px;
-      height: 12px;
-      background: rgba(60, 56, 48, 0.35);
+      height: 14px;
+      background: rgba(212, 175, 55, 0.4);
     }
 
     /* ===== INTRO ===== */
     .intro-section {
       background-color: var(--color-bg);
-      padding: 56px 0;
+      padding: 48px 24px;
+      border-top: 1px solid var(--color-border);
       border-bottom: 1px solid var(--color-border);
     }
 
-    .intro-section .intro-label {
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 16px;
+    .intro-section .inner {
+      max-width: calc(var(--max-w) - 48px);
+      margin: 0 auto;
     }
 
+    .intro-section .intro-label { display: none; }
+
     .intro-section p {
-      font-size: clamp(15px, 2vw, 17px);
+      font-size: 16px;
       color: var(--color-text);
       line-height: 1.8;
       margin-bottom: 12px;
     }
+
+    .intro-section p:last-child { margin-bottom: 0; }
 
     .intro-section p + p {
       color: var(--color-text-muted);
@@ -178,8 +192,8 @@
     }
 
     .progress-step.active {
-      color: var(--color-text);
-      border-bottom-color: var(--color-primary-dark);
+      color: var(--color-red);
+      border-bottom-color: var(--color-red);
     }
 
     .progress-step-label {
@@ -262,10 +276,10 @@
       display: inline;
       font-family: var(--font-en);
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--color-red);
       background: none;
       padding: 0;
       border-radius: 0;
@@ -283,7 +297,7 @@
 
     .step-title {
       font-size: clamp(17px, 3vw, 22px);
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.2;
       letter-spacing: -0.02em;
       color: var(--color-text);
@@ -317,7 +331,7 @@
       font-size: 15px;
       color: var(--color-text-muted);
       line-height: 1.75;
-      border-left: 2px solid var(--color-primary-dark);
+      border-left: 2px solid var(--color-red);
       padding-left: 14px;
     }
 
@@ -342,23 +356,24 @@
       content: '•';
       position: absolute;
       left: 0;
-      color: var(--color-primary-dark);
+      color: var(--color-red);
       font-weight: 400;
     }
 
     code {
       background: var(--color-primary-light);
-      border: 1px solid var(--color-primary-dark);
+      border: none;
       border-radius: 3px;
-      padding: 1px 6px;
+      padding: 2px 6px;
       font-family: monospace;
       font-size: 0.9em;
+      color: var(--color-text);
     }
 
-    /* Guide box */
+    /* Guide box — Gold vibe */
     .guide-box {
-      background: var(--color-primary-light);
-      border-left: 2px solid var(--color-primary-dark);
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 2px solid var(--color-accent);
       border-radius: 0;
       padding: 18px 20px;
     }
@@ -366,10 +381,10 @@
     .guide-box-header {
       font-family: var(--font-en);
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #5C4A00;
+      color: var(--color-text);
       margin-bottom: 8px;
       display: flex;
       align-items: center;
@@ -379,7 +394,7 @@
     .guide-box p {
       font-size: 14px;
       line-height: 1.8;
-      color: #5C4A00;
+      color: var(--color-text);
     }
 
     /* External links — outline button */
@@ -401,46 +416,43 @@
       font-size: 13px;
       font-weight: 500;
       padding: 6px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--color-primary-dark);
-      transition: background 150ms ease, border-color 150ms ease;
+      border-radius: 6px;
+      border: 1px solid var(--color-border);
+      transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
       letter-spacing: 0.01em;
     }
 
     .link-btn:hover {
-      background: var(--color-accent-light);
-      border-color: var(--color-accent);
+      background: var(--color-primary-light);
+      border-color: var(--color-text);
+      color: var(--color-text);
       text-decoration: none;
     }
 
     .link-btn .arrow {
       font-size: 11px;
-      opacity: 0.7;
+      opacity: 0.6;
     }
 
     /* ===== FLOW DIAGRAM ===== */
     .flow-section {
       background: var(--color-bg);
       color: var(--color-text);
-      padding: 72px 0;
+      padding: 64px 24px;
       border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
     }
 
-    .flow-section .section-label {
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 12px;
+    .flow-section .inner {
+      max-width: calc(var(--max-w) - 48px);
+      margin: 0 auto;
     }
+
+    .flow-section .section-label { display: none; }
 
     .flow-section h2 {
       font-size: clamp(20px, 4vw, 26px);
-      font-weight: 600;
-      margin-bottom: 40px;
+      font-weight: 700;
+      margin-bottom: 36px;
       letter-spacing: -0.02em;
       color: var(--color-text);
     }
@@ -461,15 +473,15 @@
     }
 
     .flow-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 0;
-      background: var(--color-primary-light);
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      background: var(--color-surface);
       border: 1px solid var(--color-primary-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 24px;
     }
 
     .flow-label {
@@ -482,8 +494,7 @@
     .flow-arrow {
       font-family: var(--font-en);
       font-size: 18px;
-      color: var(--color-primary-dark);
-      opacity: 0.7;
+      color: var(--color-red);
       padding: 0 6px;
       margin-bottom: 20px;
     }
@@ -491,7 +502,7 @@
     /* ===== RESOURCES ===== */
     .resources-section {
       background: var(--color-bg);
-      padding: 72px 0;
+      padding: 64px 0 80px;
       border-top: 1px solid var(--color-border);
     }
 
@@ -499,19 +510,11 @@
       margin-bottom: 32px;
     }
 
-    .section-label {
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 10px;
-    }
+    .section-label { display: none; }
 
     .section-header h2 {
       font-size: clamp(20px, 4vw, 26px);
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--color-text);
     }
@@ -527,7 +530,7 @@
       border: none;
       border-top: 1px solid var(--color-border);
       border-radius: 0;
-      padding: 18px 0;
+      padding: 20px 0;
       text-decoration: none;
       color: var(--color-text);
       display: block;
@@ -539,13 +542,11 @@
     }
 
     .tool-card:hover .tool-name {
-      text-decoration: underline;
-      text-decoration-color: var(--color-primary-dark);
-      text-underline-offset: 2px;
+      color: var(--color-red);
     }
 
     .tool-emoji {
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 4px;
     }
 
@@ -553,6 +554,7 @@
       font-weight: 600;
       font-size: 15px;
       color: var(--color-text);
+      transition: color 150ms ease;
     }
 
     .tool-desc {
@@ -571,13 +573,14 @@
 
     /* ===== FOOTER ===== */
     .site-footer {
-      background: none;
-      color: var(--color-text-muted);
-      border-top: 1px solid var(--color-border);
-      padding: 40px 0;
+      background: var(--color-surface);
+      color: rgba(255, 255, 255, 0.5);
+      border-top: none;
+      padding: 40px 24px;
       font-size: 13px;
       font-family: var(--font-en);
       line-height: 1.8;
+      text-align: center;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -585,7 +588,7 @@
       .header-meta { gap: 12px; }
       .header-meta .divider { display: none; }
       .flow-arrow { padding: 0 4px; font-size: 14px; }
-      .flow-icon { width: 40px; height: 40px; font-size: 18px; }
+      .flow-icon { width: 44px; height: 44px; font-size: 20px; }
       .flow-label { font-size: 10px; }
       .progress-step { padding: 12px 8px; }
     }
@@ -602,7 +605,7 @@
       }
 
       .site-header {
-        background: var(--color-primary) !important;
+        background: var(--color-surface) !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
@@ -641,9 +644,10 @@
 
   <!-- ===== INTRO ===== -->
   <div class="intro-section">
-    <p class="intro-label">About this guide</p>
-    <p>이 교안은 교육 후 참여자가 혼자서도 따라할 수 있도록 작성되었습니다.</p>
-    <p>시연할 전체 과정을 단계별로 정리했으며, 링크와 설명을 따라가면 코딩 경험 없이도 나만의 웹사이트를 만들고 배포할 수 있습니다.</p>
+    <div class="inner">
+      <p>이 교안은 교육 후 참여자가 혼자서도 따라할 수 있도록 작성되었습니다.</p>
+      <p>시연할 전체 과정을 단계별로 정리했으며, 링크와 설명을 따라가면 코딩 경험 없이도 나만의 웹사이트를 만들고 배포할 수 있습니다.</p>
+    </div>
   </div>
 
   <!-- ===== PROGRESS NAV ===== -->
@@ -1035,6 +1039,7 @@
 
   <!-- ===== FLOW DIAGRAM ===== -->
   <section class="flow-section">
+    <div class="inner">
     <p class="section-label">Today's Journey</p>
     <h2>오늘 경험한 전체 흐름</h2>
 
@@ -1068,6 +1073,7 @@
         <div class="flow-icon">🌐</div>
         <span class="flow-label">URL</span>
       </div>
+    </div>
     </div>
   </section>
 
