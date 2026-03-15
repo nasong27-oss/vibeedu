@@ -580,8 +580,20 @@
       font-size: 13px;
       font-family: var(--font-en);
       line-height: 1.8;
-      text-align: center;
     }
+    .site-footer .footer-inner {
+      max-width: calc(var(--max-w) - 48px);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+    }
+    .site-footer .footer-text { flex: 1; }
+    .site-footer .footer-text a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+    }
+    .site-footer .footer-text a:hover { color: rgba(255,255,255,0.7); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
@@ -595,12 +607,12 @@
 
     /* ===== ADMIN ===== */
     #admin-btn {
-      position: fixed; top: 12px; right: 16px; z-index: 9999;
-      background: transparent; color: #bbb; border: 1px solid #ddd;
+      background: transparent; color: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.15);
       font-size: 11px; padding: 4px 10px; border-radius: 4px; cursor: pointer;
       font-family: var(--font-en); letter-spacing: 0.05em; transition: color 0.15s, border-color 0.15s;
+      flex-shrink: 0;
     }
-    #admin-btn:hover { color: #555; border-color: #aaa; }
+    #admin-btn:hover { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.35); }
 
     #admin-modal {
       display: none; position: fixed; inset: 0;
@@ -1157,42 +1169,42 @@
         <a href="https://replit.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">💻</div>
           <div class="tool-name">Replit</div>
-          <div class="tool-desc">빠른 웹앱 프로토타이핑. 브라우저에서 바로 코딩 체험 가능</div>
+          <div class="tool-desc">브라우저에서 바로 AI 코딩 체험</div>
           <div class="tool-url">replit.com</div>
         </a>
 
         <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">🔮</div>
           <div class="tool-name">Google AI Studio</div>
-          <div class="tool-desc">Google의 AI 도구. Gemini 모델로 다양한 결과물 생성</div>
+          <div class="tool-desc">Gemini 모델로 결과물을 즉시 생성</div>
           <div class="tool-url">aistudio.google.com</div>
         </a>
 
         <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">🐙</div>
           <div class="tool-name">GitHub</div>
-          <div class="tool-desc">코드의 구글 드라이브. 모든 코드를 저장·관리하는 플랫폼</div>
+          <div class="tool-desc">코드 파일을 저장·버전 관리하는 플랫폼</div>
           <div class="tool-url">github.com</div>
         </a>
 
         <a href="https://antigravity.google" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">🚀</div>
           <div class="tool-name">안티그래비티</div>
-          <div class="tool-desc">Google AI Pro 기반 국내 바이브코딩 툴. GitHub과 직접 연동</div>
-          <div class="tool-url">antigravity.so</div>
+          <div class="tool-desc">Google AI Pro 기반 바이브코딩 툴. GitHub 직접 연동</div>
+          <div class="tool-url">antigravity.google</div>
         </a>
 
         <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">▲</div>
           <div class="tool-name">Vercel</div>
-          <div class="tool-desc">코드를 URL로 자동 변환하는 배포 플랫폼. GitHub 연동 자동 배포</div>
+          <div class="tool-desc">GitHub 연동 자동 배포 플랫폼</div>
           <div class="tool-url">vercel.com</div>
         </a>
 
         <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="tool-card">
           <div class="tool-emoji">✨</div>
           <div class="tool-name">Gemini</div>
-          <div class="tool-desc">프롬프트 작성 보조 도구. 무료 사용 가능, Gemini Advanced(Google One AI Premium)로 업그레이드 가능</div>
+          <div class="tool-desc">프롬프트 작성 보조 AI. Flash·Pro·Thinking 모델 선택 가능</div>
           <div class="tool-url">gemini.google.com</div>
         </a>
       </div>
@@ -1201,8 +1213,14 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
-    <p>바이브코딩 입문 교안 &nbsp;·&nbsp; 코딩 경험 없이 나만의 웹사이트를 만드는 7단계</p>
-    <p style="margin-top: 6px; font-size: 12px; opacity: 0.6;">이 가이드는 교육 참여자를 위한 자기주도 학습 문서입니다.</p>
+    <div class="footer-inner">
+      <div class="footer-text">
+        <p>바이브코딩 입문 교안 &nbsp;·&nbsp; 코딩 경험 없이 나만의 웹사이트를 만드는 7단계</p>
+        <p style="margin-top: 4px; font-size: 12px; opacity: 0.6;">이 가이드는 교육 참여자를 위한 자기주도 학습 문서입니다.</p>
+        <p style="margin-top: 8px; font-size: 12px; opacity: 0.45;">이 페이지는 클로드코드, 안티그래비티, Vercel을 활용해 제작되었습니다. &nbsp;<a href="mailto:nasong27@gmail.com">nasong27@gmail.com</a></p>
+      </div>
+      <button id="admin-btn">수정</button>
+    </div>
   </footer>
 
   <!-- ===== JAVASCRIPT ===== -->
@@ -1237,8 +1255,6 @@
 
     stepEls.forEach(el => navObserver.observe(el));
   </script>
-
-  <button id="admin-btn">수정</button>
 
   <div id="admin-modal">
     <div id="admin-modal-inner">
